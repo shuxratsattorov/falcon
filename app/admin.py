@@ -1,17 +1,18 @@
 from django.contrib import admin
 
 from app import models
-from app.models import ProductAttribute, Image, Attribute, AttributeValue, Comment, Profile, Rating
+from app.models import ProductAttribute, Image, AttributeKey, AttributeValue, Comment, Profile, Rating, Customer
 
 # Register your models here.
 
 admin.site.register(Image)
 admin.site.register(ProductAttribute)
-admin.site.register(Attribute)
+admin.site.register(AttributeKey)
 admin.site.register(AttributeValue)
 admin.site.register(Comment)
 admin.site.register(Profile)
 admin.site.register(Rating)
+admin.site.register(Customer)
 
 
 @admin.register(models.Product)

@@ -8,13 +8,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
 from app.forms import CommentModelForm
-from app.models import Product, Cart, Comment, Profile, AttributeValue, Rating
+from app.models import Product, Cart, Comment, Profile, AttributeValue, Rating, ProductAttribute, Customer
 
 
 # Create your views here.
 
 
-def product_list(request, cat_id=None):
+def product_list(request):
 
     # Fetch all products
     products = Product.objects.all()
@@ -28,30 +28,9 @@ def product_list(request, cat_id=None):
     except Profile.DoesNotExist:
         profile = None
 
-    # Fetch average rating
-    avg_rating = Rating.objects.filter(product=request.user.id).aggregate(avg_rating=Round(Avg('rating')))
-
     # Fetch recent products
     time_threshold = timezone.now() - timedelta(hours=36)
     recent_products = Product.objects.filter(created_at__gte=time_threshold)
-
-    # Fetch first 4 attribute values
-    attribute_values = AttributeValue.objects.filter().distinct()[:4]
-
-    # Handle filtering
-    # filter_type = request.GET.get('filter', '')
-    # if cat_id:
-    #     products = Product.objects.filter(product=cat_id)
-    #     if filter_type == 'expensive':
-    #         products = products.order_by('-price')
-    #     elif filter_type == 'cheap':
-    #         products = products.order_by('price')
-    # else:
-    #     products = Product.objects.all()
-    #     if filter_type == 'expensive':
-    #         products = products.order_by('-price')
-    #     elif filter_type == 'cheap':
-    #         products = products.order_by('price')
 
     # Pagination
     paginator = Paginator(products, 3)
@@ -61,13 +40,10 @@ def product_list(request, cat_id=None):
     context = {
         'page_obj': page_obj,
         'cart_items': cart_items,
-        'attribute_values': attribute_values,
         'recent_products': recent_products,
-        # 'filter_option': filter_option,
         'profile': profile,
-        'avg_rating': avg_rating['avg_rating']
     }
-    return render(request, 'app/product/product-list.html', context)
+    return render(request, 'app/product/products/product-list.html', context)
 
 
 def product_detail(request, slug):
@@ -96,7 +72,7 @@ def product_detail(request, slug):
         'profile': profile,
         'avg_rating': avg_rating['avg_rating']
     }
-    return render(request, 'app/product/product-details.html', context)
+    return render(request, 'app/product/products/product-details.html', context)
 
 
 @login_required
@@ -130,7 +106,7 @@ def show_cart(request):
         'total_price': total_price,
         'profile': profile
     }
-    return render(request, 'app/product/shopping-cart.html', context)
+    return render(request, 'app/product/shopping_cart/shopping-cart.html', context)
 
 
 def delete_cart_item(request, item_id):
@@ -141,7 +117,7 @@ def delete_cart_item(request, item_id):
     context = {
         'cart': cart
     }
-    return render(request, 'app/product/shopping-cart.html', context)
+    return render(request, 'app/product/shopping_cart/shopping-cart.html', context)
 
 
 @login_required
@@ -157,7 +133,7 @@ def comment(request, slug):
             return redirect('product_detail', slug)
     else:
         form = CommentModelForm()
-    return render(request, 'app/product/product-details.html', {'form': form, 'product': product})
+    return render(request, 'app/product/products/product-details.html', {'form': form, 'product': product})
 
 
 def like_product(request, slug):
@@ -174,3 +150,46 @@ def like_product(request, slug):
 def checkout(request):
     return render(request, 'app/product')
 
+
+def customers(request):
+    customer = Customer.objects.all()
+    # Handle cart items
+    cart_items = Cart.objects.filter(user=request.user.id)
+
+    # Handle profile fetching
+    try:
+        profile = Profile.objects.get(user=request.user.id)
+    except Profile.DoesNotExist:
+        profile = None
+
+    # Pagination
+    paginator = Paginator(customer, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'page_obj': page_obj,
+        'cart_items': cart_items,
+        'profile': profile
+    }
+    return render(request, 'app/product/customers/customers.html', context)
+
+
+def customer_detail(request, id):
+    customer = get_object_or_404(Customer, id=id)
+
+    # Handle cart items
+    cart_items = Cart.objects.filter(user=request.user.id)
+
+    # Handle profile fetching
+    try:
+        profile = Profile.objects.get(user=request.user.id)
+    except Profile.DoesNotExist:
+        profile = None
+
+    context = {
+        'customer': customer,
+        'cart_items': cart_items,
+        'profile': profile,
+    }
+    return render(request, 'app/product/customers/customer-details.html', context)

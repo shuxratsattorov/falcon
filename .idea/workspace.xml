@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eee00d59-2a9e-4890-af16-6d456bc34a83" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/falcon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/falcon.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0002_rename_review_productreview_message_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0003_alter_user_username.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0004_alter_productreview_username.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0005_remove_productreview_username_productreview_username.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0006_remove_productreview_username_productreview_username.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0007_rename_productreview_comment_alter_attribute_table_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0008_alter_product_discount_alter_product_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0009_remove_user_image_profile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0010_alter_profile_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0011_alter_profile_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0012_alter_comment_message.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0013_rating_remove_comment_rating.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0014_rating_comment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0015_remove_rating_comment_rating_product_rating_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0016_alter_rating_product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0017_alter_rating_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/product/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/product/shopping_cart/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/product/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/product/products/product-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/product/product-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/product/products/product-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/app/product/shopping-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/product/shopping_cart/shopping-cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2k6WYSbQnXyoubBiDWd3UqNmERq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Victus/Downloads/Safe File/falcon/app/templates/app/product/customers&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Victus\Downloads\Safe File\falcon\app\templates\app\product\customers" />
+      <recent name="C:\Users\Victus\Downloads\Safe File\falcon\app\static\app\assets\img\team" />
+      <recent name="C:\Users\Victus\Downloads\Safe File\falcon\app\templates\app\product" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Victus\Downloads\Safe File\falcon\app\templates\app\product\products" />
+      <recent name="C:\Users\Victus\Downloads\Safe File\falcon\app\templates\app\product\shopping_cart" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PY-241.15989.155" />
+        <option value="bundled-python-sdk-babbdf50b680-7c6932dee5e4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.15989.155" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eee00d59-2a9e-4890-af16-6d456bc34a83" name="Changes" comment="" />
+      <created>1722604560326</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722604560326</updated>
+      <workItem from="1722604563196" duration="3966000" />
+      <workItem from="1722611268335" duration="15398000" />
+      <workItem from="1722663165824" duration="11092000" />
+      <workItem from="1722691223776" duration="6445000" />
+      <workItem from="1722878239216" duration="65045000" />
+      <workItem from="1723211035684" duration="1321000" />
+      <workItem from="1723225632855" duration="3331000" />
+      <workItem from="1723229175383" duration="6743000" />
+      <workItem from="1723370782664" duration="24839000" />
+      <workItem from="1723452535148" duration="352000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

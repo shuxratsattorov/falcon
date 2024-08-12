@@ -1,5 +1,6 @@
 from django.contrib.auth.models import PermissionsMixin, AbstractBaseUser
 from django.db import models
+from django.db.models import Avg
 from social_core.utils import slugify
 from app.managers import CustomUserManager
 
@@ -26,7 +27,7 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=55, null=True, blank=True)
     phone_number = models.CharField(max_length=13, null=True, blank=True)
     image = models.ImageField(upload_to='profile/', null=True, blank=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -42,8 +43,8 @@ class Product(models.Model):
     amount = models.IntegerField(default=1)
     discount = models.IntegerField(null=True, blank=True, default=0)
     stock = models.BooleanField(default=False)
-    slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
     users_like = models.ManyToManyField(User, related_name='users_like', blank=True)
+    slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -51,18 +52,25 @@ class Product(models.Model):
     class Meta:
         db_table = 'product'
 
+    @property
+    def avg_rating(self):
+        avg_rating = Rating.objects.filter(product=self).aggregate(Avg('rating'))['rating__avg']
+        return avg_rating if avg_rating is not None else 0
+
     def get_attributes(self) -> list:
         product_attributes = ProductAttribute.objects.filter(product=self)
         attributes = []
         for pa in product_attributes:
             attributes.append({
-                'attribute_name': pa.attribute.attribute_name,
+                'attribute_name': pa.attribute_key.attribute_key,
                 'attribute_value': pa.attribute_value.attribute_value
             })
         return attributes
 
     @property
     def discounted_price(self):
+        if self.discount is None:
+            return self.price
         if self.discount > 0:
             return self.price * (1 - self.discount / 100)
         return self.price
@@ -85,14 +93,14 @@ class Image(models.Model):
         db_table = 'image'
 
 
-class Attribute(models.Model):
-    attribute_name = models.CharField(max_length=100)
+class AttributeKey(models.Model):
+    attribute_key = models.CharField(max_length=100)
 
     class Meta:
         db_table = 'attribute_key'
 
     def __str__(self):
-        return self.attribute_name
+        return self.attribute_key
 
 
 class AttributeValue(models.Model):
@@ -106,9 +114,12 @@ class AttributeValue(models.Model):
 
 
 class ProductAttribute(models.Model):
-    product = models.ForeignKey('app.Product', on_delete=models.CASCADE)
-    attribute = models.ForeignKey('app.Attribute', on_delete=models.CASCADE)
+    attribute_key = models.ForeignKey('app.AttributeKey', on_delete=models.CASCADE)
     attribute_value = models.ForeignKey('app.AttributeValue', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='attributes')
+
+    def __str__(self):
+        return f"{self.attribute_key} - {self.attribute_value}"
 
     class Meta:
         db_table = 'attribute'
@@ -128,7 +139,7 @@ class Comment(models.Model):
 class Rating(models.Model):
     rating = models.IntegerField(default=0)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='rating')
 
     class Meta:
         db_table = 'rating'
@@ -151,3 +162,11 @@ class Cart(models.Model):
     # @property
     # def total_price(self):
     #     return self.total_cost * self.
+
+
+class Customer(models.Model):
+    address = models.CharField(max_length=255, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    user = models.ForeignKey('app.User', on_delete=models.CASCADE, related_name='user')
+
+    created_at = models.DateTimeField(auto_now_add=True)
